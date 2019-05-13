@@ -4,8 +4,13 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
+    dataBinding {
+        enabled true
+    }
     defaultConfig {
         applicationId "eu.lecabinetnumerique.tinywikicount"
         minSdkVersion 16
@@ -20,10 +25,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation Dependencies.kotlinStandardLibrary
-    implementation Dependencies.appcompatV7
+    implementation Dependencies.appcompat
     implementation Dependencies.constraintLayout
+
+    //databinding
+    kapt Dependencies.kapt_databinding_compiler
+    implementation Dependencies.lifecycle
 }

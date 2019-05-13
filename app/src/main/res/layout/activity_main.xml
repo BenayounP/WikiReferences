@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <data>
+        <variable
+                name="viewModel"
+                type="eu.lecabinetnumerique.tinywikicount.view.mainviewmodel.MainViewModel_Int"/>
+    </data>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:context=".view.MainActivity">
+
+        <EditText
+                android:id="@+id/edit_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_search_string"
+                android:textAlignment="center"
+                android:text="@={viewModel.editTextString}"/>
+
+        <Button
+                android:id="@+id/btn_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Button"
+                android:onClick="@{() -> viewModel.onCheckSearchCountButtonClick()}"
+                android:text="@string/button_search" />
+
+        <TextView
+                android:id="@+id/txt_search_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/nominal_text"/>
+
+        <TextView
+                android:id="@+id/txt_last_search_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/last_search_title"
+                style="@style/title"
+                android:hideIfEmpty="@{viewModel.lastSearch}"/>
+
+        <TextView
+                android:id="@+id/txt_last_search_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/nominal_text"
+                android:text="@{viewModel.lastSearch}"
+                android:hideIfEmpty="@{viewModel.lastSearch}"/>
+
+    </LinearLayout>
+
+</layout>

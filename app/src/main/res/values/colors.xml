@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Base application theme. -->
     <color name="colorPrimary">#05C1FD</color>
-    <color name="colorPrimaryDark">#5E2495</color>
+    <color name="colorPrimaryDark">#5848F4</color>
     <color name="colorAccent">#F9A857</color>
+
+    <!-- TEXTS -->
+    <color name="title_text_color">@color/colorPrimaryDark</color>
+    <color name="nominal_text_color">#212121</color>
+
 </resources>

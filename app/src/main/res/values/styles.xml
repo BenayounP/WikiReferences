@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- TEXTS -->
+
+    <style name="nominal_text" parent="">
+        <item name="android:textColor">@color/nominal_text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="title" parent="nominal_text">
+        <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <!-- BUTTON -->
+
+    <style name="Button" parent="AppTheme">
+        <item name="colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
