@@ -20,12 +20,18 @@ fun hideIfEmpty(view: View, observableString : ObservableField<String>) {
 }
 
 
-object MainViewModelBinder {
-    fun bind(appCompatActivity: AppCompatActivity, viewLayoutId:Int)
+object MainViewModelUtils {
+    fun <T> bind(appCompatActivity: AppCompatActivity, viewLayoutId:Int, viewModel : T ) where T : ViewModel, T : MainViewModel_Int
     {
-        val activityMainBinding =  DataBindingUtil.setContentView<ActivityMainBinding>(appCompatActivity, viewLayoutId)
-        activityMainBinding.viewModel = ViewModelProviders.of(appCompatActivity).get(MainViewModel_Fake::class.java)
+        val activityMainBinding =DataBindingUtil.setContentView<ActivityMainBinding>(appCompatActivity, viewLayoutId)
+        activityMainBinding.viewModel = ViewModelProviders.of(
+            appCompatActivity,
+            viewModelFactory {viewModel}
+        ).get(viewModel::class.java)
     }
 
-
+    inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(aClass: Class<T>):T = f() as T
+        }
 }
