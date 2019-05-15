@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation project(':usescases')
     implementation Dependencies.kotlinStandardLibrary
     implementation Dependencies.appcompat
     implementation Dependencies.constraintLayout

@@ -3,4 +3,9 @@
     <string name="hint_search_string">Enter Search Text</string>
     <string name="button_search">Check Search Count</string>
     <string name="last_search_title">Last Search</string>
+    <plurals name="last_search_result">
+        <item quantity="zero">No result</item>
+        <item quantity="one">%1$s : %2$d link</item>
+        <item quantity="other">%1$s : %2$d links</item>
+    </plurals>
 </resources>

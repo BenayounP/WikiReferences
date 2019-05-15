@@ -7,7 +7,7 @@
     <data>
         <variable
                 name="viewModel"
-                type="eu.lecabinetnumerique.tinywikicount.view.mainviewmodel.MainViewModel_Int"/>
+                type="eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int"/>
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="20dp"
-            tools:context=".view.MainActivity">
+            tools:context=".presentation.MainActivity">
 
         <EditText
                 android:id="@+id/edit_search"
@@ -45,15 +45,15 @@
                 android:layout_height="wrap_content"
                 android:text="@string/last_search_title"
                 style="@style/title"
-                android:hideIfEmpty="@{viewModel.lastSearch}"/>
+                android:hideIfEmpty="@{viewModel.lastSearchString}"/>
 
         <TextView
                 android:id="@+id/txt_last_search_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/nominal_text"
-                android:text="@{viewModel.lastSearch}"
-                android:hideIfEmpty="@{viewModel.lastSearch}"/>
+                android:text="@{viewModel.lastSearchString}"
+                android:hideIfEmpty="@{viewModel.lastSearchString}"/>
 
     </LinearLayout>
 
