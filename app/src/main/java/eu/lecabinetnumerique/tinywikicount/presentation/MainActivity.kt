@@ -3,7 +3,7 @@ package eu.lecabinetnumerique.tinywikicount.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import eu.lecabinetnumerique.tinywikicount.R
-import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModelUtils
+import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.binder.MainViewModelUtils
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Impl
 import eu.lecabinetnumerique.tinywikicount.usescases.MainUsesCases_Fake
 

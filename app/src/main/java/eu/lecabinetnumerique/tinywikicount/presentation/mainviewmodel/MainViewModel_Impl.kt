@@ -1,22 +1,24 @@
 package eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.ObservableField
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import eu.lecabinetnumerique.tinywikicount.R
+import androidx.lifecycle.*
+import eu.lecabinetnumerique.tinywikicount.domain.SearchModel
 import eu.lecabinetnumerique.tinywikicount.framework.MainApplication
+import eu.lecabinetnumerique.tinywikicount.framework.ResourcesUtils
 import eu.lecabinetnumerique.tinywikicount.usescases.MainUsesCases_Int
 
-class MainViewModel_Impl(val mainUsesCases_Int : MainUsesCases_Int) : MainViewModel_Int, ViewModel()  {
+class MainViewModel_Impl(val mainUsesCases : MainUsesCases_Int) : MainViewModel_Int, ViewModel()  {
     override var editTextString: String = ""
 
     override fun onCheckSearchCountButtonClick() {
-        val occurrences : Int = mainUsesCases_Int.getOccurrences(editTextString)
-        lastSearchString.set(MainApplication.applicationContext().resources.getQuantityString(R.plurals.last_search_result,occurrences, editTextString, occurrences))
+        val occurrences : Int = mainUsesCases.getOccurrences(editTextString)
+        val search = SearchModel(editTextString,occurrences)
+        _lastSearchString.value =ResourcesUtils.getSearchResultString(search,MainApplication.applicationContext().resources)
+
     }
 
-    override val lastSearchString: ObservableField<String> = ObservableField<String>(mainUsesCases_Int.getLastSearch())
+    private val _lastSearchString = MutableLiveData<String>().apply{
+        val lastSearch = mainUsesCases.getLastSearch()
+        value = ResourcesUtils.getSearchResultString(lastSearch,MainApplication.applicationContext().resources) }
+    override val lastSearchString: LiveData<String> = _lastSearchString
 }
+

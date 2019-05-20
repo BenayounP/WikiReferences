@@ -7,18 +7,26 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Versions.compileSdkVersion
     dataBinding {
         enabled true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     defaultConfig {
         applicationId "eu.lecabinetnumerique.tinywikicount"
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,12 +37,23 @@ android {
 }
 
 dependencies {
+    // Modules
     implementation project(':usescases')
+    implementation project(':domain')
+
+    // Kotlin
     implementation Dependencies.kotlinStandardLibrary
+
+    // Android
     implementation Dependencies.appcompat
     implementation Dependencies.constraintLayout
 
-    //databinding
+    // Databinding
     kapt Dependencies.kapt_databinding_compiler
     implementation Dependencies.lifecycle
+
+    // Tests
+    testImplementation Dependencies.junit
+    testImplementation Dependencies.mockito
+    testImplementation Dependencies.roboelectric
 }
