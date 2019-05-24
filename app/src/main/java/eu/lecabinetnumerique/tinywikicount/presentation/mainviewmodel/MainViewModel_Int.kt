@@ -1,13 +1,12 @@
 package eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel
 
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
-interface MainViewModel_Int {
-    var editTextString : String
+abstract class MainViewModel_Int : ViewModel() {
+    abstract var editTextString : String
+    abstract fun onCheckSearchCountButtonClick()
+    abstract val lastSearchString : LiveData<String>
 
-    fun onCheckSearchCountButtonClick()
-    val lastSearchString : LiveData<String>
 }

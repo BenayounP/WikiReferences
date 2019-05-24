@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.appVersionCode
+        versionName Versions.appVersionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    // Modules
+    implementation project(':mod_3_domain')
+    implementation project(':mod_4_data')
+    // Kotlin
+    implementation Dependencies.kotlinStandardLibrary
+
+    // Android
+    implementation Dependencies.appcompat
+
+    //retrofit
+    implementation Dependencies.retrofit_Main
+    implementation Dependencies.retrofit_RxJava2Adapter
+    implementation Dependencies.retrofit_Gson_Converter
+
+    //rxAndroid
+    implementation Dependencies.rxandroid
+}

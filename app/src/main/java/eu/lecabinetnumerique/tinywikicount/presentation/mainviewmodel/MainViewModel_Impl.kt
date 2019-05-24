@@ -1,24 +1,31 @@
 package eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel
 
-import androidx.lifecycle.*
-import eu.lecabinetnumerique.tinywikicount.domain.SearchModel
-import eu.lecabinetnumerique.tinywikicount.framework.MainApplication
-import eu.lecabinetnumerique.tinywikicount.framework.ResourcesUtils
-import eu.lecabinetnumerique.tinywikicount.usescases.MainUsesCases_Int
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.presentation.ResourcesUtils
+import eu.lecabinetnumerique.tinywikicount.usecases.UseCases_Int
 
-class MainViewModel_Impl(val mainUsesCases : MainUsesCases_Int) : MainViewModel_Int, ViewModel()  {
+class MainViewModel_Impl(val useCases : UseCases_Int) : MainViewModel_Int()  {
+
     override var editTextString: String = ""
 
-    override fun onCheckSearchCountButtonClick() {
-        val occurrences : Int = mainUsesCases.getOccurrences(editTextString)
-        val search = SearchModel(editTextString,occurrences)
-        _lastSearchString.value =ResourcesUtils.getSearchResultString(search,MainApplication.applicationContext().resources)
-
+    init {
+        useCases.getWikiCountObserver().onChange = { oldValue, newValue -> setLastSearch(newValue) }
     }
 
-    private val _lastSearchString = MutableLiveData<String>().apply{
-        val lastSearch = mainUsesCases.getLastSearch()
-        value = ResourcesUtils.getSearchResultString(lastSearch,MainApplication.applicationContext().resources) }
+    override fun onCheckSearchCountButtonClick() {
+        useCases.searchOccurrencesOnWiki(editTextString)
+    }
+
+    private val _lastSearchString = MutableLiveData<String>()
+
     override val lastSearchString: LiveData<String> = _lastSearchString
+
+    private fun setLastSearch(wikiCountModel: WikiCountModel){
+        _lastSearchString.value = ResourcesUtils.getSearchResultString(wikiCountModel,
+            eu.lecabinetnumerique.tiniwikicount.framework.MainApplication.applicationContext().resources)
+    }
+
 }
 

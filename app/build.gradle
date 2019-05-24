@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
+
     dataBinding {
         enabled true
     }
@@ -22,15 +23,21 @@ android {
         applicationId "eu.lecabinetnumerique.tinywikicount"
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode Versions.appVersionCode
+        versionName Versions.appVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+            // used for defining minSdk in tests with roboelectric
+            buildConfigField 'int', 'MIN_SDK_VERSION', Versions.minSdkVersion.toString()
         }
     }
 
@@ -38,8 +45,10 @@ android {
 
 dependencies {
     // Modules
-    implementation project(':usescases')
-    implementation project(':domain')
+    implementation project(':mod_2_use_cases')
+    implementation project(':mod_3_domain')
+    implementation project(':mod_4_data')
+    implementation project(':mod_5_framework')
 
     // Kotlin
     implementation Dependencies.kotlinStandardLibrary

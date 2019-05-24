@@ -14,23 +14,23 @@ import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewMo
 
 @BindingAdapter("android:hideIfEmpty")
 fun hideIfEmpty(view: View, observableString : LiveData<String>) {
-    view.visibility = if (observableString?.value.isNullOrEmpty()) View.GONE else View.VISIBLE
+    view.visibility = if (observableString.value.isNullOrEmpty()) View.GONE else View.VISIBLE
 }
 
 
 object MainViewModelUtils {
-    fun <T> bind(appCompatActivity: AppCompatActivity, viewLayoutId:Int, viewModel : T ) where T : ViewModel, T : MainViewModel_Int
+    fun bind(appCompatActivity: AppCompatActivity, viewLayoutId:Int, mainViewModel : MainViewModel_Int )
     {
         val activityMainBinding =DataBindingUtil.setContentView<ActivityMainBinding>(appCompatActivity, viewLayoutId)
         activityMainBinding.viewModel = ViewModelProviders.of(
             appCompatActivity,
-            viewModelFactory { viewModel }
-        ).get(viewModel::class.java)
+            viewModelFactory { mainViewModel }
+        ).get(mainViewModel::class.java)
         activityMainBinding.lifecycleOwner=appCompatActivity
     }
 
-    private inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+    private inline fun <viewModel : ViewModel> viewModelFactory(crossinline f: () -> viewModel) =
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(aClass: Class<T>):T = f() as T
+            override fun <viewModel : ViewModel> create(aClass: Class<viewModel>):viewModel = f() as viewModel
         }
 }

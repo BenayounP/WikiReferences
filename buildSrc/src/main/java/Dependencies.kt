@@ -1,8 +1,12 @@
 object Versions {
-    // App
+    // Build config
     val compileSdkVersion = 28
     val minSdkVersion = 16
     val targetSdkVersion = compileSdkVersion
+
+    // App version
+    const val appVersionCode = 1
+    const val appVersionName = "0.9.0"
 
     // Kotlin
     val kotlin = "1.3.31"
@@ -18,6 +22,12 @@ object Versions {
     val junit = "4.12"
     val mockito ="1.5.0"
     val robolectric ="4.2"
+
+    // retrofit
+    val retrofit="2.4.0"
+
+    // rxandroid
+    val rxandroid ="2.1.0"
 }
 object Dependencies {
     // Kotlin
@@ -34,5 +44,13 @@ object Dependencies {
     val junit ="junit:junit:${Versions.junit}"
     val mockito = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockito}"
     val roboelectric ="org.robolectric:robolectric:${Versions.robolectric}"
+
+    // retrofit
+    val retrofit_Main = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofit_RxJava2Adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    val retrofit_Gson_Converter="com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+    //rxandroid
+    val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
 
 }

@@ -4,38 +4,38 @@ package eu.lecabinetnumerique.tinywikicount
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import eu.lecabinetnumerique.tinywikicount.domain.SearchModel
-import eu.lecabinetnumerique.tinywikicount.framework.ResourcesUtils
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.presentation.ResourcesUtils
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Impl
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int
-import eu.lecabinetnumerique.tinywikicount.usescases.MainUsesCases_Int
+import eu.lecabinetnumerique.tinywikicount.usecases.UseCases_Int
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
 class mainviewmodel_tests : AndroidTest() {
 
-    // View Model to Test
+    // View WikiAPIJSonModel to Test
     private lateinit var mainViewModel : MainViewModel_Int
 
     // dependencies
-    private lateinit var mainUsesCases: MainUsesCases_Int
+    private lateinit var useCases: UseCases_Int
 
     // last search
-    private lateinit var initialLastSearch : SearchModel
+    private lateinit var initialLastWikiCount : WikiCountModel
 
     @Before
     fun setup() {
-        mainUsesCases = mock()
-        initialLastSearch = SearchModel("Liverpool",2019)
-        whenever(mainUsesCases.getLastSearch()).thenReturn(initialLastSearch)
-        mainViewModel = MainViewModel_Impl(mainUsesCases)
+        useCases = mock()
+        initialLastWikiCount = WikiCountModel("Liverpool", 2019)
+        whenever(useCases.getLastSavedSearch()).thenReturn(initialLastWikiCount)
+        mainViewModel = MainViewModel_Impl(useCases)
     }
 
     @Test
     fun onFirstClick_display_rightMessage_atLaunch() {
         // Arrange
-        val expectedResult = ResourcesUtils.getSearchResultString(initialLastSearch, context.resources)
+        val expectedResult = ResourcesUtils.getSearchResultString(initialLastWikiCount, context.resources)
 
         //assert
         Assert.assertEquals(expectedResult,mainViewModel.lastSearchString.value)
@@ -74,11 +74,11 @@ class mainviewmodel_tests : AndroidTest() {
     private fun onFirstClick_display_rightMessage(occurrences : Int, query : String){
 
         // arrange
-        val search = SearchModel(query,occurrences)
+        val search = WikiCountModel(query, occurrences)
         val expectedResult = ResourcesUtils.getSearchResultString(search, context.resources)
 
         // act
-        whenever(mainUsesCases.getOccurrences(any())).thenReturn(occurrences)
+        whenever(useCases.searchOccurrencesOnWiki(any())).thenReturn(occurrences)
         mainViewModel.editTextString = query
         mainViewModel.onCheckSearchCountButtonClick()
 

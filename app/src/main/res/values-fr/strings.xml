@@ -6,7 +6,7 @@
     <string name ="last_search_no_result">Pas de résultat</string>
     <plurals name="last_search_result">
         <item quantity="zero"></item>
-        <item quantity="one">%1$s : %2$d lien</item>
-        <item quantity="other">%1$s : %2$d liens</item>
+        <item quantity="one">%1$s : %2$d reference</item>
+        <item quantity="other">%1$s : %2$d references</item>
     </plurals>
 </resources>
