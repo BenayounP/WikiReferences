@@ -1,13 +1,11 @@
 package eu.lecabinetnumerique.tiniwikicount.framework.network
 
-import android.util.Log
 import android.widget.Toast
 import eu.lecabinetnumerique.tiniwikicount.framework.MainApplication
 import eu.lecabinetnumerique.tinywikicount.data.network.WikiAPIMngr_Int
 import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
-import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class WikiAPIMngr_Impl : WikiAPIMngr_Int {
@@ -17,21 +15,20 @@ class WikiAPIMngr_Impl : WikiAPIMngr_Int {
     }
 
 
-    override fun searchOccurrencesOnWiki(queryString: String, wikiCountModelObservable: WikiCountModel.Observable) {
-        var searchStateObservable = SearchStateModel.Observable()
+    override fun searchOccurrencesOnWiki(queryString: String, wikiReferencesModelObservable: WikiReferencesModel.Observable, searchStateObservable : SearchStateModel.Observable) {
+        searchStateObservable.searchState = SearchStateModel.Loading
         wikiApiServe.hitCountCheck("query", "json", "search", queryString)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
-                        wikiCountModelObservable.wikiCountModel = WikiCountModel(queryString,result.query.searchinfo.totalhits)
+                        wikiReferencesModelObservable.wikiReferencesModel = WikiReferencesModel(queryString,result.query.searchinfo.totalhits)
                         searchStateObservable.searchState = SearchStateModel.Idle
                 },
                 { error -> searchStateObservable.searchState = SearchStateModel.Error
                     Toast.makeText(MainApplication.applicationContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()}
             )
     }
-
 
 
 }

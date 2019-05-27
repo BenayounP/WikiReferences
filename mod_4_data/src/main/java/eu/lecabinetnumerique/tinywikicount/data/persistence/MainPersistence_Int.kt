@@ -1,8 +1,8 @@
 package eu.lecabinetnumerique.tinywikicount.data.persistence
 
-import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 interface MainPersistence_Int {
-    fun getLastSavedSearch(): WikiCountModel
-    fun saveLastSavedSearch(wikiCountModel: WikiCountModel)
+    fun getLastSavedSearch(): WikiReferencesModel
+    fun saveLastSavedSearch(wikiReferencesModel: WikiReferencesModel)
 }

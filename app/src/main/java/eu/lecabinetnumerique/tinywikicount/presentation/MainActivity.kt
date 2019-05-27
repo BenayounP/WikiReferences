@@ -8,6 +8,7 @@ import eu.lecabinetnumerique.tinywikicount.data.Repository_Impl
 import eu.lecabinetnumerique.tinywikicount.data.Repository_Int
 import eu.lecabinetnumerique.tinywikicount.data.network.WikiAPIMngr_Fake
 import eu.lecabinetnumerique.tinywikicount.data.network.WikiAPIMngr_Int
+import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Impl
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.binder.MainViewModelUtils

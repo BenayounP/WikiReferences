@@ -1,6 +1,5 @@
 package eu.lecabinetnumerique.tinywikicount.domain.searchstate
 
-import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
 import kotlin.properties.Delegates
 
 sealed class SearchStateModel {

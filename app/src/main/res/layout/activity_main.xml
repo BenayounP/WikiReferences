@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -9,10 +9,9 @@
                 type="eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int"/>
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:padding="20dp"
             tools:context=".presentation.MainActivity">
 
@@ -20,28 +19,49 @@
                 android:id="@+id/edit_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 android:hint="@string/hint_search_string"
                 android:textAlignment="center"
                 android:text="@={viewModel.editTextString}"/>
+
+        <LinearLayout
+                android:id="@+id/searchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/edit_search">
+
+        <ProgressBar
+                android:id="@+id/progress_circular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:showIfLoading="@{viewModel.searchState}"/>
+
 
         <Button
                 android:id="@+id/btn_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/Button"
+                android:hideIfLoading="@{viewModel.searchState}"
                 android:onClick="@{() -> viewModel.onCheckSearchCountButtonClick()}"
                 android:text="@string/button_search" />
+
+        </LinearLayout>
 
         <TextView
                 android:id="@+id/txt_search_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/searchLayout"
                 style="@style/nominal_text"/>
 
         <TextView
                 android:id="@+id/txt_last_search_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txt_search_result"
                 android:text="@string/last_search_title"
                 style="@style/title"
                 android:hideIfEmpty="@{viewModel.lastSearchString}"/>
@@ -50,10 +70,11 @@
                 android:id="@+id/txt_last_search_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txt_last_search_title"
                 style="@style/nominal_text"
                 android:text="@{viewModel.lastSearchString}"
                 android:hideIfEmpty="@{viewModel.lastSearchString}"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

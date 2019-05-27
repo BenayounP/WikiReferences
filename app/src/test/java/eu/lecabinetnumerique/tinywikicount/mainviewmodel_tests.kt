@@ -4,7 +4,7 @@ package eu.lecabinetnumerique.tinywikicount
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 import eu.lecabinetnumerique.tinywikicount.presentation.ResourcesUtils
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Impl
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int
@@ -22,20 +22,20 @@ class mainviewmodel_tests : AndroidTest() {
     private lateinit var useCases: UseCases_Int
 
     // last search
-    private lateinit var initialLastWikiCount : WikiCountModel
+    private lateinit var initialLastWikiReferences : WikiReferencesModel
 
     @Before
     fun setup() {
         useCases = mock()
-        initialLastWikiCount = WikiCountModel("Liverpool", 2019)
-        whenever(useCases.getLastSavedSearch()).thenReturn(initialLastWikiCount)
+        initialLastWikiReferences = WikiReferencesModel("Liverpool", 2019)
+        whenever(useCases.getLastSavedSearch()).thenReturn(initialLastWikiReferences)
         mainViewModel = MainViewModel_Impl(useCases)
     }
 
     @Test
     fun onFirstClick_display_rightMessage_atLaunch() {
         // Arrange
-        val expectedResult = ResourcesUtils.getSearchResultString(initialLastWikiCount, context.resources)
+        val expectedResult = ResourcesUtils.getSearchResultString(initialLastWikiReferences, context.resources)
 
         //assert
         Assert.assertEquals(expectedResult,mainViewModel.lastSearchString.value)
@@ -74,7 +74,7 @@ class mainviewmodel_tests : AndroidTest() {
     private fun onFirstClick_display_rightMessage(occurrences : Int, query : String){
 
         // arrange
-        val search = WikiCountModel(query, occurrences)
+        val search = WikiReferencesModel(query, occurrences)
         val expectedResult = ResourcesUtils.getSearchResultString(search, context.resources)
 
         // act

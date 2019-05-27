@@ -9,12 +9,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import eu.lecabinetnumerique.tinywikicount.databinding.ActivityMainBinding
+import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int
 
 
 @BindingAdapter("android:hideIfEmpty")
-fun hideIfEmpty(view: View, observableString : LiveData<String>) {
-    view.visibility = if (observableString.value.isNullOrEmpty()) View.GONE else View.VISIBLE
+fun hideIfEmpty(view: View, liveString : LiveData<String>) {
+    view.visibility = if (liveString.value.isNullOrEmpty()) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("android:hideIfLoading")
+fun hideIfLoading(view: View, liveSearchState: LiveData<SearchStateModel>) {
+    view.visibility = if (liveSearchState.value==SearchStateModel.Loading) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("android:showIfLoading")
+fun showIfLoading(view: View, liveSearchState: LiveData<SearchStateModel>) {
+    view.visibility = if (liveSearchState.value==SearchStateModel.Loading) View.VISIBLE else View.GONE
 }
 
 

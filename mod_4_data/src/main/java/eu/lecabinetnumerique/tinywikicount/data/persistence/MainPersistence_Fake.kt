@@ -1,13 +1,13 @@
 package eu.lecabinetnumerique.tinywikicount.data.persistence
 
-import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiCountModel
+import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 class MainPersistence_Fake : MainPersistence_Int {
-    override fun saveLastSavedSearch(wikiCountModel: WikiCountModel) {
+    override fun saveLastSavedSearch(wikiReferencesModel: WikiReferencesModel) {
         // nothing to do -> it's fake !
     }
 
-    override fun getLastSavedSearch(): WikiCountModel {
-        return WikiCountModel("Liverpool", 2019);
+    override fun getLastSavedSearch(): WikiReferencesModel {
+        return WikiReferencesModel("Liverpool", 2019);
     }
 }
