@@ -7,4 +7,5 @@ interface UseCases_Int {
     fun searchOccurrencesOnWiki(queryString: String)
     fun getWikiCountObserver(): WikiReferencesModel.Observer
     fun getSearchStateObserver(): SearchStateModel.Observer
+    fun getLastSavedWikiReferencesModel() : WikiReferencesModel
 }

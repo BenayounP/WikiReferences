@@ -1,5 +1,6 @@
 package eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
@@ -19,8 +20,10 @@ class MainViewModel_Impl(val useCases : UseCases_Int) : MainViewModel_Int()  {
 
 
     init {
-        useCases.getWikiCountObserver().onChange = { oldValue, newValue -> setLastSearch(newValue)}
+        useCases.getWikiCountObserver().onChange = { oldValue, newValue ->
+            setLastSearch(newValue)}
         useCases.getSearchStateObserver().onChange ={ oldValue, newValue -> setSearchState(newValue)}
+        setLastSearch(useCases.getLastSavedWikiReferencesModel())
     }
 
     override fun onCheckSearchCountButtonClick() {

@@ -4,6 +4,7 @@ import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
 import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 class Repository_Fake : Repository_Int {
+
     var wikiCountObservable = WikiReferencesModel.Observable()
     var searchStateObservable = SearchStateModel.Observable()
 
@@ -17,5 +18,9 @@ class Repository_Fake : Repository_Int {
 
     override fun getSearchStateObserver(): SearchStateModel.Observer {
         return searchStateObservable.getObserver()
+    }
+
+    override fun getLastSavedWikiReferencesModel(): WikiReferencesModel {
+        return WikiReferencesModel("Liverpool",2019)
     }
 }

@@ -19,4 +19,8 @@ class UseCases_Fake : UseCases_Int {
     override fun getSearchStateObserver(): SearchStateModel.Observer {
         return fakeSearchStateModel.getObserver()
     }
+
+    override fun getLastSavedWikiReferencesModel(): WikiReferencesModel {
+        return WikiReferencesModel("Liverpool", 2019)
+    }
 }

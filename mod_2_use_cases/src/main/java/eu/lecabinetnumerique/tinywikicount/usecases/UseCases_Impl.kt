@@ -17,5 +17,8 @@ class UseCases_Impl(var repository: Repository_Int) : UseCases_Int{
     override fun getSearchStateObserver(): SearchStateModel.Observer {
         return repository.getSearchStateObserver()
     }
+    override fun getLastSavedWikiReferencesModel(): WikiReferencesModel {
+        return repository.getLastSavedWikiReferencesModel()
+    }
 
 }
