@@ -10,8 +10,8 @@ class UseCases_Impl(var repository: Repository_Int) : UseCases_Int{
         return repository.getWikiReferencesObserver()
     }
 
-    override fun searchOccurrencesOnWiki(queryString: String) {
-        repository.searchOccurrencesOnWiki(queryString)
+    override fun searchReferencesOnWiki(queryString: String) {
+        repository.searchReferencesOnWiki(queryString)
     }
 
     override fun getSearchStateObserver(): SearchStateModel.Observer {

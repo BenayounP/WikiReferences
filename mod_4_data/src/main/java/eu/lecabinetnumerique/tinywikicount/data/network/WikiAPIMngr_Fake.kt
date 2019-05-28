@@ -5,7 +5,7 @@ import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 class WikiAPIMngr_Fake : WikiAPIMngr_Int {
 
-    override fun searchOccurrencesOnWiki(queryString: String, wikiReferencesModelObservable: WikiReferencesModel.Observable,searchStateObservable : SearchStateModel.Observable) {
+    override fun searchreferencesOnWiki(queryString: String, wikiReferencesModelObservable: WikiReferencesModel.Observable, searchStateObservable : SearchStateModel.Observable) {
         wikiReferencesModelObservable.wikiReferencesModel = WikiReferencesModel(queryString,(1..1000).shuffled().first())
     }
 

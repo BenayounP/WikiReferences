@@ -1,8 +1,8 @@
-package eu.lecabinetnumerique.tinywikicount.data.model
+package eu.lecabinetnumerique.tinywikicount.data.local
 
 import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
-interface ModelRepository_Int {
+interface LocalRepository_Int {
     fun getLastSavedWikiReferencesModel() : WikiReferencesModel
     fun saveLastSavedSearch(wikiReferencesModel: WikiReferencesModel)
 }

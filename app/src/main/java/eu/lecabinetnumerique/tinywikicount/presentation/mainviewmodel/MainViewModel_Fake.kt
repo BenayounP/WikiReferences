@@ -16,9 +16,9 @@ class MainViewModel_Fake() : MainViewModel_Int() {
     override var editTextString : String = ""
     override fun onCheckSearchCountButtonClick() {
         if (editTextString.isNotBlank()) {
-            val fakeOccurrences = (1..1000).shuffled().first()
+            val fakeReferences = (1..1000).shuffled().first()
             _lastSearchString.value =
-                eu.lecabinetnumerique.tiniwikicount.framework.MainApplication.applicationContext().resources.getQuantityString(R.plurals.last_search_result,fakeOccurrences, editTextString, fakeOccurrences)
+                eu.lecabinetnumerique.tiniwikicount.framework.MainApplication.applicationContext().resources.getQuantityString(R.plurals.last_search_result,fakeReferences, editTextString, fakeReferences)
         }
     }
 }

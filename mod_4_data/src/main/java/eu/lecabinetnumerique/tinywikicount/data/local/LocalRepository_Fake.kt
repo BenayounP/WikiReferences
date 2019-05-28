@@ -1,8 +1,8 @@
-package eu.lecabinetnumerique.tinywikicount.data.model
+package eu.lecabinetnumerique.tinywikicount.data.local
 
 import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
-class ModelRepository_Fake : ModelRepository_Int {
+class LocalRepository_Fake : LocalRepository_Int {
 
 
     override fun getLastSavedWikiReferencesModel(): WikiReferencesModel {

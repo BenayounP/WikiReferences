@@ -8,7 +8,7 @@ class Repository_Fake : Repository_Int {
     var wikiCountObservable = WikiReferencesModel.Observable()
     var searchStateObservable = SearchStateModel.Observable()
 
-    override fun searchOccurrencesOnWiki(queryString: String) {
+    override fun searchReferencesOnWiki(queryString: String) {
         wikiCountObservable.wikiReferencesModel = WikiReferencesModel(queryString,(1..1000).shuffled().first())
     }
 

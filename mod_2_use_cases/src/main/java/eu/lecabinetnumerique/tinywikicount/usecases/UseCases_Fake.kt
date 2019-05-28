@@ -8,7 +8,7 @@ class UseCases_Fake : UseCases_Int {
     val fakeLastWikiSearchObservable = WikiReferencesModel.Observable()
     val fakeSearchStateModel = SearchStateModel.Observable()
 
-    override fun searchOccurrencesOnWiki(queryString: String) {
+    override fun searchReferencesOnWiki(queryString: String) {
         fakeLastWikiSearchObservable.wikiReferencesModel = WikiReferencesModel(queryString,(1..1000).shuffled().first())
     }
 

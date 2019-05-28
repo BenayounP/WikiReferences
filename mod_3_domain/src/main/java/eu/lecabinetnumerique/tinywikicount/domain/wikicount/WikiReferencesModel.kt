@@ -2,9 +2,9 @@ package eu.lecabinetnumerique.tinywikicount.domain.wikicount
 
 import kotlin.properties.Delegates
 
-data class WikiReferencesModel(val query : String="", val occurrences : Int=-1, val timestamp : Long = System.currentTimeMillis()){
+data class WikiReferencesModel(val query : String="", val references : Int=-1, val timestamp : Long = System.currentTimeMillis()){
     fun isEmpty() : Boolean{
-        return occurrences==-1;
+        return references==-1;
     }
 
     class Observer{

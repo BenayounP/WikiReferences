@@ -5,5 +5,5 @@ import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 
 interface WikiAPIMngr_Int {
-    fun searchOccurrencesOnWiki(queryString: String, wikiReferencesModelObservable : WikiReferencesModel.Observable,searchStateObservable : SearchStateModel.Observable)
+    fun searchreferencesOnWiki(queryString: String, wikiReferencesModelObservable : WikiReferencesModel.Observable, searchStateObservable : SearchStateModel.Observable)
 }

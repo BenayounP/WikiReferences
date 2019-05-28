@@ -15,7 +15,7 @@ class WikiAPIMngr_Impl : WikiAPIMngr_Int {
     }
 
 
-    override fun searchOccurrencesOnWiki(queryString: String, wikiReferencesModelObservable: WikiReferencesModel.Observable, searchStateObservable : SearchStateModel.Observable) {
+    override fun searchreferencesOnWiki(queryString: String, wikiReferencesModelObservable: WikiReferencesModel.Observable, searchStateObservable : SearchStateModel.Observable) {
         searchStateObservable.searchState = SearchStateModel.Loading
         wikiApiServe.hitCountCheck("query", "json", "search", queryString)
             .subscribeOn(Schedulers.io())

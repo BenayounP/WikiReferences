@@ -1,6 +1,5 @@
 package eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import eu.lecabinetnumerique.tinywikicount.domain.searchstate.SearchStateModel
@@ -27,12 +26,12 @@ class MainViewModel_Impl(val useCases : UseCases_Int) : MainViewModel_Int()  {
     }
 
     override fun onCheckSearchCountButtonClick() {
-        useCases.searchOccurrencesOnWiki(editTextString)
+        useCases.searchReferencesOnWiki(editTextString)
     }
 
 
-
     private fun setLastSearch(newWikiReferencesModel: WikiReferencesModel){
+        if (newWikiReferencesModel.isEmpty()==false)
         _lastSearchString.value = ResourcesUtils.getSearchResultString(newWikiReferencesModel,
             eu.lecabinetnumerique.tiniwikicount.framework.MainApplication.applicationContext().resources)
     }

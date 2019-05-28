@@ -42,4 +42,10 @@ dependencies {
 
     //rxAndroid
     implementation Dependencies.rxandroid
+
+    //room
+    kapt Dependencies.kapt_room
+    implementation Dependencies.room
+    implementation Dependencies.room_ktx
+
 }

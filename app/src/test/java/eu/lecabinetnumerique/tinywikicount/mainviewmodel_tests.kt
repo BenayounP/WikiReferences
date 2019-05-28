@@ -44,41 +44,41 @@ class mainviewmodel_tests : AndroidTest() {
     @Test
     fun onFirstClick_display_rightMessage_when_0_count() {
         // Arrange
-        val occurrence = 0
+        val references = 0
         val query = "Manchester"
 
-        onFirstClick_display_rightMessage(occurrence,query)
+        onFirstClick_display_rightMessage(references,query)
 
     }
 
     @Test
     fun onFirstClick_display_rightMessage_when_1_count() {
         // Arrange
-        val occurrence = 1
+        val reference = 1
         val query = "Manchester City"
 
-        onFirstClick_display_rightMessage(occurrence,query)
+        onFirstClick_display_rightMessage(reference,query)
 
     }
 
     @Test
     fun onFirstClick_display_rightMessage_when_multiple_counts() {
         // Arrange
-        val occurrence = 2019
+        val reference = 2019
         val query = "Liverpool"
 
-        onFirstClick_display_rightMessage(occurrence,query)
+        onFirstClick_display_rightMessage(reference,query)
 
     }
 
-    private fun onFirstClick_display_rightMessage(occurrences : Int, query : String){
+    private fun onFirstClick_display_rightMessage(references : Int, query : String){
 
         // arrange
-        val search = WikiReferencesModel(query, occurrences)
+        val search = WikiReferencesModel(query, references)
         val expectedResult = ResourcesUtils.getSearchResultString(search, context.resources)
 
         // act
-        whenever(useCases.searchOccurrencesOnWiki(any())).thenReturn(occurrences)
+        whenever(useCases.searchReferencesOnWiki(any())).thenReturn(references)
         mainViewModel.editTextString = query
         mainViewModel.onCheckSearchCountButtonClick()
 
