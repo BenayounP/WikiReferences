@@ -12,7 +12,7 @@ class UseCases_Fake : UseCases_Int {
         fakeLastWikiSearchObservable.wikiReferencesModel = WikiReferencesModel(queryString,(1..1000).shuffled().first())
     }
 
-    override fun getWikiCountObserver(): WikiReferencesModel.Observer {
+    override fun getWikiReferencesObserver(): WikiReferencesModel.Observer {
         return fakeLastWikiSearchObservable.getObserver()
     }
 

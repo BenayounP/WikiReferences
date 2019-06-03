@@ -8,4 +8,6 @@
         <item quantity="one">%1$s : %2$d reference</item>
         <item quantity="other">%1$s : %2$d references</item>
     </plurals>
+    <string name ="user_hasnt_fill_query">Please enter search Text</string>
+    <string name ="research_error">There was an error during research. Please try again later</string>
 </resources>

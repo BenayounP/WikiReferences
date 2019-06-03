@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 @Entity(tableName = RoomConstants.tableName)
 data class SearchEntity(@PrimaryKey(autoGenerate = true) var id : Long?,
@@ -13,7 +15,7 @@ data class SearchEntity(@PrimaryKey(autoGenerate = true) var id : Long?,
     constructor():this(null,"",0,0)
 
     fun getWikiReferenceModel() : WikiReferencesModel{
-        return WikiReferencesModel(query,references,timestamp)
+           return  WikiReferencesModel(query,references,timestamp)
     }
 
     fun setColumns(wikiReferencesModel: WikiReferencesModel){

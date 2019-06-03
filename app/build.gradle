@@ -55,14 +55,25 @@ dependencies {
 
     // Android
     implementation Dependencies.appcompat
+    implementation Dependencies.material
     implementation Dependencies.constraintLayout
 
-    // Databinding
+    // Data binding
     kapt Dependencies.kapt_databinding_compiler
     implementation Dependencies.lifecycle
 
+
     // Tests
     testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.testRunner
     testImplementation Dependencies.mockito
     testImplementation Dependencies.roboelectric
+    androidTestImplementation Dependencies.espressoCore
+    androidTestImplementation Dependencies.testRules
+    androidTestImplementation Dependencies.truth
+    androidTestImplementation Dependencies.extJunit
+
+
+
+
 }

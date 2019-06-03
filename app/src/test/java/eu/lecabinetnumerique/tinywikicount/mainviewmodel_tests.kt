@@ -80,7 +80,7 @@ class mainviewmodel_tests : AndroidTest() {
         // act
         whenever(useCases.searchReferencesOnWiki(any())).thenReturn(references)
         mainViewModel.editTextString = query
-        mainViewModel.onCheckSearchCountButtonClick()
+        mainViewModel.onSearchButtonClick()
 
         //assert
         Assert.assertEquals(expectedResult,mainViewModel.lastSearchString.value)

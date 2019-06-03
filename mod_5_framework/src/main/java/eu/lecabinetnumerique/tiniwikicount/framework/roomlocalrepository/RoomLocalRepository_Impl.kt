@@ -4,24 +4,20 @@ import eu.lecabinetnumerique.tiniwikicount.framework.roomlocalrepository.room.Se
 import eu.lecabinetnumerique.tiniwikicount.framework.roomlocalrepository.room.SearchEntity
 import eu.lecabinetnumerique.tinywikicount.data.local.LocalRepository_Int
 import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
+import kotlinx.coroutines.*
 
 class RoomLocalRepository_Impl : LocalRepository_Int {
 
-    private val searchDataBase  by lazy {
-        SearchDataBase.getInstance()
-    }
 
     override fun getLastSavedWikiReferencesModel(): WikiReferencesModel {
-        var dataBaseWikiReferenceModel = searchDataBase?.searchDao()?.getLastSearch()?.getWikiReferenceModel() ?: WikiReferencesModel()
+        var dataBaseWikiReferenceModel = runBlocking { CoroutineScope(Dispatchers.IO).async { SearchDataBase.getInstance()?.searchDao()?.getLastSearch()?.getWikiReferenceModel() ?: WikiReferencesModel()}.await()}
         return dataBaseWikiReferenceModel
     }
 
     override fun saveLastSavedSearch(wikiReferencesModel: WikiReferencesModel) {
         var searchEntity = SearchEntity()
         searchEntity.setColumns(wikiReferencesModel)
-        searchDataBase?.searchDao()?.insert(searchEntity)
+        runBlocking { CoroutineScope(Dispatchers.IO).launch {SearchDataBase.getInstance()?.searchDao()?.insert(searchEntity)}}
     }
-
-
 
 }

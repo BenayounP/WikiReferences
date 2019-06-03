@@ -6,7 +6,7 @@ import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 class UseCases_Impl(var repository: Repository_Int) : UseCases_Int{
 
-    override fun getWikiCountObserver(): WikiReferencesModel.Observer {
+    override fun getWikiReferencesObserver(): WikiReferencesModel.Observer {
         return repository.getWikiReferencesObserver()
     }
 

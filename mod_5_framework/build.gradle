@@ -9,6 +9,12 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion Versions.compileSdkVersion
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     defaultConfig {
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
@@ -29,11 +35,10 @@ dependencies {
     // Modules
     implementation project(':mod_3_domain')
     implementation project(':mod_4_data')
+
     // Kotlin
     implementation Dependencies.kotlinStandardLibrary
 
-    // Android
-    implementation Dependencies.appcompat
 
     //retrofit
     implementation Dependencies.retrofit_Main
@@ -43,9 +48,12 @@ dependencies {
     //rxAndroid
     implementation Dependencies.rxandroid
 
-    //room
+    // Room
     kapt Dependencies.kapt_room
     implementation Dependencies.room
-    implementation Dependencies.room_ktx
+    implementation Dependencies.room_ktx_coroutines
 
+    // Coroutines
+    implementation Dependencies.coroutines_core
+    implementation Dependencies.coroutines_android
 }

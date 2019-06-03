@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <data>
-        <variable
-                name="viewModel"
-                type="eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int"/>
-    </data>
+<data>
+    <variable
+            name="viewModel"
+            type="eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int"/>
+</data>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinatorLayout"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.MainActivity"
+        app:displaySnackBar="@{viewModel.snackBarString}">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="20dp"
-            tools:context=".presentation.MainActivity">
+            >
 
         <EditText
                 android:id="@+id/edit_search"
@@ -22,7 +32,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:hint="@string/hint_search_string"
                 android:textAlignment="center"
-                android:text="@={viewModel.editTextString}"/>
+                android:text="@={viewModel.editTextString}"
+        />
 
         <LinearLayout
                 android:id="@+id/searchLayout"
@@ -31,22 +42,22 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/edit_search">
 
-        <ProgressBar
-                android:id="@+id/progress_circular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:showIfLoading="@{viewModel.searchState}"/>
+            <ProgressBar
+                    android:id="@+id/progress_circular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:showIfLoading="@{viewModel.searchState}"/>
 
 
-        <Button
-                android:id="@+id/btn_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/Button"
-                android:hideIfLoading="@{viewModel.searchState}"
-                android:onClick="@{() -> viewModel.onCheckSearchCountButtonClick()}"
-                android:text="@string/button_search" />
+            <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Button"
+                    app:hideIfLoading="@{viewModel.searchState}"
+                    app:onSearchClick="@{viewModel}"
+                    android:text="@string/button_search" />
 
         </LinearLayout>
 
@@ -64,7 +75,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_search_result"
                 android:text="@string/last_search_title"
                 style="@style/title"
-                android:hideIfEmpty="@{viewModel.lastSearchString}"/>
+                app:hideIfEmpty="@{viewModel.lastSearchString}"/>
 
         <TextView
                 android:id="@+id/txt_last_search_content"
@@ -73,8 +84,9 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_last_search_title"
                 style="@style/nominal_text"
                 android:text="@{viewModel.lastSearchString}"
-                android:hideIfEmpty="@{viewModel.lastSearchString}"/>
+                app:hideIfEmpty="@{viewModel.lastSearchString}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

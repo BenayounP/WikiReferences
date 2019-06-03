@@ -15,6 +15,7 @@ import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewMo
 import eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.binder.MainViewModelUtils
 import eu.lecabinetnumerique.tinywikicount.usecases.UseCases_Impl
 import eu.lecabinetnumerique.tinywikicount.usecases.UseCases_Int
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {

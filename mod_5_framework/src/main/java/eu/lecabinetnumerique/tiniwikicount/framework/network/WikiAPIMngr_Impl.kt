@@ -25,8 +25,7 @@ class WikiAPIMngr_Impl : WikiAPIMngr_Int {
                         wikiReferencesModelObservable.wikiReferencesModel = WikiReferencesModel(queryString,result.query.searchinfo.totalhits)
                         searchStateObservable.searchState = SearchStateModel.Idle
                 },
-                { error -> searchStateObservable.searchState = SearchStateModel.Error
-                    Toast.makeText(MainApplication.applicationContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()}
+                { error -> searchStateObservable.searchState = SearchStateModel.Error}
             )
     }
 

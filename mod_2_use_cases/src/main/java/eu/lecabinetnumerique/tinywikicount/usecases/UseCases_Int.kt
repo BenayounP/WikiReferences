@@ -5,7 +5,7 @@ import eu.lecabinetnumerique.tinywikicount.domain.wikicount.WikiReferencesModel
 
 interface UseCases_Int {
     fun searchReferencesOnWiki(queryString: String)
-    fun getWikiCountObserver(): WikiReferencesModel.Observer
+    fun getWikiReferencesObserver(): WikiReferencesModel.Observer
     fun getSearchStateObserver(): SearchStateModel.Observer
     fun getLastSavedWikiReferencesModel() : WikiReferencesModel
 }

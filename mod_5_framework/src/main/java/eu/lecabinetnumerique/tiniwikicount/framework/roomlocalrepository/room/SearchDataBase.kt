@@ -12,13 +12,11 @@ abstract class SearchDataBase : RoomDatabase() {
     companion object {
         private var INSTANCE: SearchDataBase? = null
 
-        fun getInstance(): SearchDataBase? {
+        suspend fun getInstance(): SearchDataBase? {
             if (INSTANCE == null) {
                 synchronized(SearchDataBase::class) {
                     INSTANCE = Room.databaseBuilder(MainApplication.applicationContext(),
                         SearchDataBase::class.java, "${RoomConstants.tableName}.db")
-                        // TODO remove allowMainThreadQueries
-                        .allowMainThreadQueries()
                         .build()
                 }
             }
