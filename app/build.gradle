@@ -20,12 +20,12 @@ android {
     }
 
     defaultConfig {
-        applicationId "eu.lecabinetnumerique.tinywikicount"
+        applicationId "eu.lecabinetnumerique.wikireferences"
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
         versionCode Versions.appVersionCode
         versionName Versions.appVersionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -63,17 +63,16 @@ dependencies {
     implementation Dependencies.lifecycle
 
 
-    // Tests
-    testImplementation Dependencies.junit
-    androidTestImplementation Dependencies.testRunner
-    testImplementation Dependencies.mockito
-    testImplementation Dependencies.roboelectric
+    // Instrumented Tests
+    androidTestImplementation Dependencies.coreTest
+    androidTestImplementation Dependencies.JUnitAndroidRunner
     androidTestImplementation Dependencies.espressoCore
-    androidTestImplementation Dependencies.testRules
-    androidTestImplementation Dependencies.truth
-    androidTestImplementation Dependencies.extJunit
+    androidTestImplementation Dependencies.JUnitAssertions
+    androidTestImplementation Dependencies.JUnitRules
+    androidTestImplementation Dependencies.espressoIdlingResource
 
-
-
-
+    // Unit tests
+    testImplementation Dependencies.JUnitKotlin
+    testImplementation Dependencies.robotelectric
+    testImplementation Dependencies.truthAssertions
 }

@@ -5,7 +5,7 @@
 <data>
     <variable
             name="viewModel"
-            type="eu.lecabinetnumerique.tinywikicount.presentation.mainviewmodel.MainViewModel_Int"/>
+            type="eu.lecabinetnumerique.wikireferences.presentation.mainviewmodel.MainViewModel_Int"/>
 </data>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -16,7 +16,7 @@
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.MainActivity"
+        tools:context="eu.lecabinetnumerique.wikireferences.presentation.MainActivity"
         app:displaySnackBar="@{viewModel.snackBarString}">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,23 +56,16 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/Button"
                     app:hideIfLoading="@{viewModel.searchState}"
-                    app:onSearchClick="@{viewModel}"
+                    app:setSearchButtonClickListener="@{viewModel}"
                     android:text="@string/button_search" />
 
         </LinearLayout>
 
         <TextView
-                android:id="@+id/txt_search_result"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/searchLayout"
-                style="@style/nominal_text"/>
-
-        <TextView
                 android:id="@+id/txt_last_search_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/txt_search_result"
+                app:layout_constraintTop_toBottomOf="@id/searchLayout"
                 android:text="@string/last_search_title"
                 style="@style/title"
                 app:hideIfEmpty="@{viewModel.lastSearchString}"/>

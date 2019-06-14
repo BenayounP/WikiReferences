@@ -1,5 +1,5 @@
 <manifest
-        package="eu.lecabinetnumerique.tiniwikicount.framework"
+        package="eu.lecabinetnumerique.wikireferences.framework"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />

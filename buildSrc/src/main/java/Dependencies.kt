@@ -1,5 +1,9 @@
 object Versions {
 
+    // ANDROIDX VERSIONS
+    // https://developer.android.com/jetpack/androidx/versions
+
+
     /**
      * GLOBAL
      */
@@ -20,17 +24,32 @@ object Versions {
 
     /**
      * TEST
+     *
+     * source :
+     * https://developer.android.com/training/testing/set-up-project
      */
 
-    val junit = "4.12"
-    val testRunner= "1.1.1"
-    val testRules ="1.1.1"
-    val mockito ="1.5.0"
-    val robolectric ="4.2"
-    val espresso = "3.2.0"
-    val truth = "1.1.0"
-    val extJunit ="1.1.0"
+    // Core library
+    val coreTest ="1.2.0"
 
+    // AndroidJUnitRunner and JUnit Rules
+    val jUnit= "1.1.0"
+
+
+    // Assertions
+    val assertions =  "1.0.0"
+
+    // Espresso dependencies
+    val espresso= "3.1.0"
+
+    // mockito kotlin
+    val mockitoKotlin = "2.1.0"
+
+    // roboelectric
+    // http://robolectric.org/getting-started/
+    val robotelectric = "4.3"
+
+    
 
     /**
      * PRESENTATION/FRAMEWORK
@@ -81,16 +100,39 @@ object Dependencies {
     /**
      * TEST
      */
+    // Core library
+    val coreTest ="androidx.test:core:${Versions.coreTest}"
 
-    val junit ="junit:junit:${Versions.junit}"
-    val testRunner ="androidx.test:runner:${Versions.testRunner}"
-    val testRules = "androidx.test:rules:${Versions.testRules}"
-    val mockito = "com.nhaarman:mockito-kotlin-kt1.1:${Versions.mockito}"
-    val roboelectric ="org.robolectric:robolectric:${Versions.robolectric}"
-    val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-    val truth = "androidx.test.ext:truth:${Versions.truth}"
-    val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
+    // junit for Kotlin
+    val JUnitKotlin = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
 
+    // AndroidJUnitRunner and JUnit Rules
+    val JUnitAndroidRunner= "androidx.test:runner:${Versions.jUnit}"
+    val JUnitRules = "androidx.test:rules:${Versions.jUnit}"
+
+    // Assertions
+    val JUnitAssertions =  "androidx.test.ext:junit:${Versions.assertions}"
+    val truthAssertions =  "androidx.test.ext:truth:${Versions.assertions}"
+
+    // Espresso dependencies
+    val espressoCore= "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    val espressoContrib=  "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
+    val espressoIntents=  "androidx.test.espresso:espresso-intents:${Versions.espresso}"
+    val espressoAccessibility =  "androidx.test.espresso:espresso-accessibility:${Versions.espresso}"
+    val espressoWeb=  "androidx.test.espresso:espresso-web:${Versions.espresso}"
+    val espressoConcurrent= "androidx.test.espresso.idling:idling-concurrent:${Versions.espresso}"
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK"s compile classpath or the test APK
+    // classpath.
+    val espressoIdlingResource= "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
+
+    // mockito
+    val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
+
+    // robotelectric
+    val robotelectric = "org.robolectric:robolectric:${Versions.robotelectric}"
 
     /**
      * FRAMEWORK

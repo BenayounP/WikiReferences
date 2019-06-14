@@ -1,0 +1,1 @@
+include ':app', ':mod_2_use_cases', ':mod_3_domain', ':mod_4_data', ':mod_5_framework'

@@ -2,8 +2,15 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation Dependencies.kotlinStandardLibrary
+    // Modules
     implementation project(':mod_3_domain')
+
+    // Kotlin
+    implementation Dependencies.kotlinStandardLibrary
+
+    // Unit tests
+    testImplementation Dependencies.JUnitKotlin
+    testImplementation Dependencies.truthAssertions
 }
 
 sourceCompatibility = "7"

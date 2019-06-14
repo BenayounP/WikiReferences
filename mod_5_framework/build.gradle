@@ -20,12 +20,17 @@ android {
         targetSdkVersion Versions.targetSdkVersion
         versionCode Versions.appVersionCode
         versionName Versions.appVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // used for defining minSdk in tests with roboelectric
+            buildConfigField 'int', 'MIN_SDK_VERSION', Versions.minSdkVersion.toString()
         }
     }
 
@@ -56,4 +61,10 @@ dependencies {
     // Coroutines
     implementation Dependencies.coroutines_core
     implementation Dependencies.coroutines_android
+
+    // Instrumented Unit tests
+    androidTestImplementation Dependencies.coreTest
+    androidTestImplementation Dependencies.JUnitAndroidRunner
+    androidTestImplementation Dependencies.JUnitAssertions
+    androidTestImplementation Dependencies.truthAssertions
 }
