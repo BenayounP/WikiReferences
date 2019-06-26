@@ -25,12 +25,12 @@ class OnClickTests(var mainViewModel: MainViewModel_Int) : AndroidBaseTest() {
             .isEqualTo(expectedSnackBarErrorString)
     }
 
-    fun onClick_success(successesResearch: WikiReferencesModel){
+    fun onClick_success(expectedSuccessedResearch: WikiReferencesModel){
         // Arrange
-        val expectedResultString = ResourcesUtils.getSearchResultString(successesResearch, context.resources)
+        val expectedResultString = ResourcesUtils.getSearchResultString(expectedSuccessedResearch, context.resources)
 
         // Act
-        mainViewModel.editTextString = successesResearch.query
+        mainViewModel.editTextString = expectedSuccessedResearch.query
         mainViewModel.onSearchButtonClick()
 
         //Assert

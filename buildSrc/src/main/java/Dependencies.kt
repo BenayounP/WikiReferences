@@ -49,8 +49,6 @@ object Versions {
     // http://robolectric.org/getting-started/
     val robotelectric = "4.3"
 
-    
-
     /**
      * PRESENTATION/FRAMEWORK
      */

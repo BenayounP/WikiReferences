@@ -75,4 +75,5 @@ dependencies {
     testImplementation Dependencies.JUnitKotlin
     testImplementation Dependencies.robotelectric
     testImplementation Dependencies.truthAssertions
+    testImplementation Dependencies.mockitoKotlin
 }

@@ -12,7 +12,7 @@ import eu.lecabinetnumerique.wikireferences.usecases.UseCases_Fake
 import org.junit.Before
 import org.junit.Test
 
-class mainViewModelTests : AndroidBaseTest() {
+class mainViewModelTests_withFake : AndroidBaseTest() {
 
     // Model to test
     private lateinit var mainViewModel : MainViewModel_Int

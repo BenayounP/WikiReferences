@@ -35,17 +35,6 @@ class ResourceUtilsTest : AndroidBaseTest() {
     }
 
     @Test
-    fun testResultStringWith1References()
-    {
-        // Arrange
-        wikiReferencesModel = WikiReferencesModel("Manchester",1)
-
-        //Act and Test
-        Truth.assertThat(ResourcesUtils.getSearchResultString(wikiReferencesModel,context.resources))
-            .isEqualTo(context.resources.getQuantityString(R.plurals.last_search_result,wikiReferencesModel.references, wikiReferencesModel.query, wikiReferencesModel.references))
-    }
-
-    @Test
     fun testResultStringWithManyReferences()
     {
         // Arrange
